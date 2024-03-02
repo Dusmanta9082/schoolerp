@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remark Diary</title>
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+      
+.navbar {
+      background-color: #3f2982;
+      /* Red color */
+      padding: 5px;
+      /* Adjust padding to your preference */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    /* Style for the company name */
+    .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px;
+      margin-left: 2%;
+    }
+
+    /* Style for the icons */
+
+    .icons {
+      padding: 15px;
+      font-size: 20px;
+      margin-right: 2%;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 10px;
+      margin-right: 5px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      display: none;
+      /* Initially hide dropdown */
+
+    }
+
+    .icons i {
+      margin-right: 20px;
+    }
+
+    .dropdown a {
+      display: block;
+      /* Display options in a column */
+      padding: 10px 60px;
+      /* Add padding between options */
+      color: #333;
+      /* Change option text color */
+      text-decoration: none;
+      /* Remove default underline */
+    }
+
+    .dropdown a:hover {
+      background-color: #f0f0f0;
+      color: #3f2982;
+      /* Change background color on hover */
+    }
+
+
+    .container {
+      max-width: 800px;
+      margin: 1% auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      max-height: 500px; /* Set max-height to make it scrollable */
+    }
+    h1 {
+      margin-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      color: #3f2982; /* Theme color */
+    }
+    .remark {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+    .teacher {
+      font-weight: bold;
+      color: #3f2982; /* Theme color */
+    }
+
+
+    @media only screen and (max-width: 768px) {
+
+        h1{
+            margin-top: 20%;
+        }
+        .container{
+            max-height: 700px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="company-name" onClick="window.location.href='studentdash.html';">School Name</div>
+        <div class="icons">
+            <i class="fas fa-inbox" id="inbox-icon"></i> <!-- Font Awesome inbox icon -->
+            <div class="dropdown" id="inbox-dropdown">
+                <p>Inbox</p>
+                <hr>
+                <a href="#">Message from School</a>
+                <a href="#">Message from Teacher</a>
+                <a href="#">Message from Student</a>
+            </div>
+            <i class="fas fa-bell" id="bell-icon"></i> <!-- Font Awesome bell icon -->
+            <div class="dropdown" id="bell-dropdown">
+                <p>Notifications</p>
+                <hr>
+                <a href="#">Notification 1</a>
+                <a href="#">Notification 2</a>
+                <a href="#">Notification 3</a>
+            </div>
+            <i class="fas fa-cog" id="settings-icon"></i> <!-- Font Awesome settings icon -->
+            <div class="dropdown" id="settings-dropdown">
+                <p>Settings</p>
+                <hr>
+                <a href="studentaccount.html">Account</a>
+                <a href="#">Privacy</a>
+                <a href="login.html">Log out</a>
+            </div>
+        </div>
+    </div>
+
+    <h1>Remark Dairy</h1>
+<div class="container">
+  
+  <div class="remark">
+    <p class="teacher">Mrs. Smith (English Teacher)</p>
+    <p>Date: 2024-02-13</p>
+    <p>Remark: John has shown significant improvement in his writing skills. Keep up the good work!</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mr. Johnson (Math Teacher)</p>
+    <p>Date: 2024-02-12</p>
+    <p>Remark: Emily needs to pay more attention in class and complete her assignments on time.</p>
+  </div>
+
+  <!-- Add more remarks here -->
+
+  <div class="remark">
+    <p class="teacher">Miss Brown (History Teacher)</p>
+    <p>Date: 2024-02-11</p>
+    <p>Remark: David participates actively in class discussions and helps his peers.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mrs. Garcia (Art Teacher)</p>
+    <p>Date: 2024-02-10</p>
+    <p>Remark: Sarah's creativity in her art projects is truly impressive.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mr. Lee (Physics Teacher)</p>
+    <p>Date: 2024-02-09</p>
+    <p>Remark: Michael needs to focus more during class lectures.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mrs. Patel (Chemistry Teacher)</p>
+    <p>Date: 2024-02-08</p>
+    <p>Remark: Sophia's dedication to her studies is commendable.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mr. Thompson (Biology Teacher)</p>
+    <p>Date: 2024-02-07</p>
+    <p>Remark: Daniel has made significant progress in his understanding of biological concepts.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Miss Clark (Geography Teacher)</p>
+    <p>Date: 2024-02-06</p>
+    <p>Remark: Emma needs to improve her time management skills to complete assignments on time.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mrs. Rodriguez (Physical Education Teacher)</p>
+    <p>Date: 2024-02-05</p>
+    <p>Remark: Ethan is a very polite and respectful student.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Mr. Wilson (Science Teacher)</p>
+    <p>Date: 2024-02-04</p>
+    <p>Remark: Olivia has been showing great enthusiasm in her science experiments.</p>
+  </div>
+
+  <div class="remark">
+    <p class="teacher">Miss Martinez (Computer Science Teacher)</p>
+    <p>Date: 2024-02-03</p>
+    <p>Remark: Alexander needs to work on his coding skills.</p>
+  </div>
+</div>
+
+
+    
+<script>
+    // JavaScript to handle dropdown toggling
+    document.getElementById("inbox-icon").addEventListener("click", function () {
+        toggleDropdown("inbox-dropdown");
+    });
+
+    document.getElementById("bell-icon").addEventListener("click", function () {
+        toggleDropdown("bell-dropdown");
+    });
+
+    document.getElementById("settings-icon").addEventListener("click", function () {
+        toggleDropdown("settings-dropdown");
+    });
+
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        var allDropdowns = document.querySelectorAll('.dropdown');
+
+        // Close all dropdowns
+        allDropdowns.forEach(function (element) {
+            if (element.id !== dropdownId) {
+                element.style.display = "none";
+            }
+        });
+
+        // Toggle the selected dropdown
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        } else {
+            dropdown.style.display = "block";
+        }
+    }
+    </script>
+</body>
+</html>

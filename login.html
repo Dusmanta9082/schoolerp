@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <link rel="shortcut icon" href="logo.png">
+    <title>Secuconnect School</title>
+    <link rel="stylesheet" href="login.css">
+
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Secuconnect School</h1>
+    </nav>
+    <section class="hero">
+        <div class="hero-image"></div>
+
+        <div class="login-form">
+        
+            <h1>LOGIN </h1>
+            <div class="user-type-buttons">
+                <button id="studentBtn" onclick="selectUserType('student')">Student</button>
+                <button id="parentBtn" onclick="selectUserType('parent')">Parent</button>
+                <button id="teacherBtn" onclick="selectUserType('teacher')">Teacher</button>
+                <button id="counselorBtn" onclick="selectUserType('counselor')">Counselor</button>
+            </div>
+            <form id="loginForm" onsubmit="return validateForm()">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function selectUserType(userType) {
+            var buttons = document.querySelectorAll('.user-type-buttons button');
+            buttons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+            document.getElementById(userType + 'Btn').classList.add('active');
+
+            var usernamePlaceholder, formAction;
+            switch (userType) {
+                case 'student':
+                case 'parent':
+                    usernamePlaceholder = 'Student ID';
+                    formAction = 'studentdash.html';
+                    break;
+                case 'teacher':
+                case 'counselor':
+                    usernamePlaceholder = 'Login ID';
+                    formAction = 'teacherdashboard.html';
+                    break;
+                default:
+                    break;
+            }
+
+            document.getElementById('username').setAttribute('placeholder', usernamePlaceholder);
+            document.getElementById('loginForm').setAttribute('action', formAction);
+        }
+
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('Please fill in all fields');
+                return false;
+            }
+
+            // Redirect user to the appropriate dashboard after login
+            var userType = document.querySelector('.user-type-buttons button.active').id.replace('Btn', '');
+            var dashboardUrl;
+            switch (userType) {
+                case 'student':
+                    dashboardUrl = 'studentdash.html';
+                    break;
+                case 'parent':
+                    dashboardUrl = 'parentdash.html';
+                    break;
+                case 'teacher':
+                    dashboardUrl = 'teacherdash.html';
+                    break;
+                case 'counselor':
+                    dashboardUrl = 'counsilerdash.html';
+                    break;
+                default:
+                    break;
+            }
+
+            window.location.href = dashboardUrl;
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>

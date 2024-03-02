@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .navbar {
+            background-color: #3f2982;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .company-name {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            margin-left: 2%;
+        }
+
+        .icons {
+            padding: 15px;
+            font-size: 20px;
+            margin-right: 2%;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 10px;
+            margin-right: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            display: none;
+        }
+
+        .icons i {
+            margin-right: 20px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 60px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+            color: #3f2982;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #3f2982;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3f2982;
+            color: #fff;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #3f2982;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #b40000;
+        }
+
+        .paid {
+            color: green;
+        }
+
+        .pending {
+            color: red;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 600px) {
+          
+            .container {
+                margin-top: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="company-name" onClick="window.location.href='parentdash.html';">School Name</div>
+        <div class="icons">
+            <i class="fas fa-inbox" id="inbox-icon"></i>
+            <div class="dropdown" id="inbox-dropdown">
+                <p>Inbox</p>
+                <hr>
+                <a href="#">Message from School</a>
+                <a href="#">Message from Teacher</a>
+                <a href="#">Message from Student</a>
+            </div>
+            <i class="fas fa-bell" id="bell-icon"></i>
+            <div class="dropdown" id="bell-dropdown">
+                <p>Notifications</p>
+                <hr>
+                <a href="#">Notification 1</a>
+                <a href="#">Notification 2</a>
+                <a href="#">Notification 3</a>
+            </div>
+            <i class="fas fa-cog" id="settings-icon"></i>
+            <div class="dropdown" id="settings-dropdown">
+                <p>Settings</p>
+                <hr>
+                <a href="parentaccount.html">Account</a>
+                <a href="#">Privacy</a>
+                <a href="login.html">Log out</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Fee Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>January</td>
+                    <td>₹100</td>
+                    <td class="paid">Paid</td>
+                    <td><button class="btn paid-btn" onclick="showReceiptModal('January')">View Receipt</button></td>
+                </tr>
+                <tr>
+                    <td>February</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('February')">Pay Now</button></td>
+                </tr>
+                <tr>
+                    <td>March</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                </tr>
+                <tr>
+                    <td>April</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                </tr>
+                <tr>
+                    <td>May</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                </tr>
+                <tr>
+                    <td>June</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+
+                <tr>
+                    <td>August</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+
+                <tr>
+                    <td>September</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+                <tr>
+                    <td>October</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+                <tr>
+                    <td>November</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+                <tr>
+                    <td>December</td>
+                    <td>₹5100</td>
+                    <td class="pending">Pending</td>
+                    <td><button class="btn pay-btn" onclick="showPaymentModal('March')">Pay Now</button></td>
+                    
+                </tr>
+                <!-- Add more rows for other months -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal('paymentModal')">&times;</span>
+            <h2>Payment Portal</h2>
+            <p>Redirecting to the payment portal...</p>
+            <!-- Add your payment portal content here -->
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal('receiptModal')">&times;</span>
+            <h2>Payment Receipt</h2>
+            <div id="receiptDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        function showPaymentModal(month) {
+            document.getElementById('paymentModal').style.display = 'block';
+            // Here you can implement your payment portal logic
+            // For demonstration purposes, it's just a simple modal
+        }
+
+        function showReceiptModal(month) {
+            const receiptDetails = {
+                studentName: "John Doe",
+                transactionId: generateRandomString(),
+                paidMonth: month,
+                paymentDate: new Date().toLocaleDateString(),
+                description: 'School Fee Payment'
+            };
+            const receiptContent = `
+                <p><strong>Student Name:</strong> ${receiptDetails.studentName}</p>
+                <p><strong>Transaction ID:</strong> ${receiptDetails.transactionId}</p>
+                <p><strong>Paid Month:</strong> ${receiptDetails.paidMonth}</p>
+                <p><strong>Payment Date:</strong> ${receiptDetails.paymentDate}</p>
+                <p><strong>Amount:</strong> ₹5100</p>
+                <p><strong>Description:</strong> ${receiptDetails.description}</p>
+            `;
+            document.getElementById('receiptDetails').innerHTML = receiptContent;
+            document.getElementById('receiptModal').style.display = 'block';
+        }
+
+        function hideModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function generateRandomString() {
+            return Math.random().toString(36).substr(2, 9);
+        }
+    </script>
+</body>
+</html>

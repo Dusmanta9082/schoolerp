@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  
+  <link rel="stylesheet" href="leave.css">
+  
+  <link rel="stylesheet" href="leave.js">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <title>Leave Application</title>
+ 
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="company-name"  onClick="window.location.href='studentdash.html';">School Name</div>
+    <div class="icons">
+      <i class="fas fa-inbox" id="inbox-icon"></i> <!-- Font Awesome inbox icon -->
+      <div class="dropdown" id="inbox-dropdown">
+        <p>Inbox</p>
+        <hr>
+        <a href="#">Message from School</a>
+        <a href="#">Message from Teacher</a>
+        <a href="#">Message from Student</a>
+      </div>
+      <i class="fas fa-bell" id="bell-icon"></i> <!-- Font Awesome bell icon -->
+      <div class="dropdown" id="bell-dropdown">
+        <p>Notifications</p>
+        <hr>
+        <a href="#">Notification 1</a>
+        <a href="#">Notification 2</a>
+        <a href="#">Notification 3</a>
+      </div>
+      <i class="fas fa-cog" id="settings-icon"></i> <!-- Font Awesome settings icon -->
+      <div class="dropdown" id="settings-dropdown">
+        <p>Settings</p>
+        <hr>
+        <a href="studentaccount.html">Account</a>
+        <a href="#">Privacy</a>
+        <a href="login.html">Log out</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="leave-bar"><i class="fa fa-solid fa-arrow-left" onClick="window.location.href='studentdash.html';"></i>
+    <h4>Apply Leave</h4>
+    <button class="add-button" id="openForm">+</button>
+  </div>
+
+  <div class="container" id="formContainer" style="display: none;">
+    <form id="leaveForm" action="#" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="student-id">Student ID:</label>
+      <input type="text" id="student-id" name="student-id" required>
+
+      <label for="leave-type">Leave Type:</label>
+      <select id="leave-type" name="leave-type" required>
+        <option value="">Select</option>
+        <option value="Sick Leave">Sick Leave</option>
+        <option value="Vacation Leave">Vacation Leave</option>
+        <option value="Personal Leave">Personal Leave</option>
+      </select>
+
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" name="start-date" required>
+
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date" name="end-date" required>
+
+      <label for="reason">Reason:</label>
+      <textarea id="reason" name="reason" required></textarea>
+
+      <input type="submit" id="submitBtn" value="Submit">
+    </form>
+  </div>
+
+  <table id="leaveTable" style="display: none;">
+    <tr>
+      <th>Name</th>
+      <th>Student ID</th>
+      <th>Leave Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Reason</th>
+      <th>Action</th>
+    </tr>
+  </table>
+
+  <script src="studentleave.js">
+</script>
+
+
+</body>
+
+</html>

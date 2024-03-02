@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Gallery</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  .gallery {
+    display: grid;
+    grid-gap: 10px;
+    padding: 20px;
+  }
+  .gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  .back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /* Responsive styles */
+  @media only screen and (min-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+</head>
+<body>
+
+<button class="back-button" onclick="goBack()">← Back</button>
+
+<div class="gallery">
+  <!-- Random Images -->
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 1">
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div>
+ <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div>
+ <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div>
+ <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div> <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 2">
+  </div>
+  <!-- Add more images here -->
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/random/800x600/?school" alt="Image 20">
+  </div>
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+</body>
+</html>

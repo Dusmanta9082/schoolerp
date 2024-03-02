@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Admission Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea,
+    input[type="file"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    /* Popup CSS */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>School Admission Application</h1>
+    <form id="admissionForm" action="#" method="post" enctype="multipart/form-data">
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required>
+
+      <label for="state">State:</label>
+      <input type="text" id="state" name="state" required>
+
+      <label for="zipcode">Zip Code:</label>
+      <input type="text" id="zipcode" name="zipcode" required>
+
+      <label for="parent_name">Parent/Guardian Name:</label>
+      <input type="text" id="parent_name" name="parent_name" required>
+
+      <label for="parent_email">Parent/Guardian Email:</label>
+      <input type="email" id="parent_email" name="parent_email" required>
+
+      <label for="parent_phone">Parent/Guardian Phone:</label>
+      <input type="tel" id="parent_phone" name="parent_phone" required>
+
+      <label for="student_image">Upload Student Image:</label>
+      <input type="file" id="student_image" name="student_image" accept="image/*">
+
+      <label for="parent_image">Upload Parent/Guardian Image:</label>
+      <input type="file" id="parent_image" name="parent_image" accept="image/*">
+
+      <label for="previous_school">Previous School (if any):</label>
+      <input type="text" id="previous_school" name="previous_school">
+
+      <label for="comments">Additional Comments/Notes:</label>
+      <textarea id="comments" name="comments" rows="4"></textarea>
+
+      <input type="submit" value="Submit Application">
+    </form>
+  </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <p id="studentInfo"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('admissionForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Generate student ID
+      var fullName = document.getElementById('fullname').value;
+      var studentId = 'S' + fullName.charAt(0).toUpperCase() + fullName.split(' ')[1].charAt(0).toUpperCase() + Math.floor(Math.random() * 1000);
+      
+      // Generate random password
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var password = '';
+      for (var i = 0; i < 6; i++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      
+      // Show student ID and password in popup
+      var popup = document.getElementById('popup');
+      var studentInfo = document.getElementById('studentInfo');
+      studentInfo.innerHTML = 'Student ID: ' + studentId + '<br>Password: ' + password;
+      popup.style.display = 'block';
+
+      // Close the popup when close button is clicked
+      var closeButton = document.getElementsByClassName('close')[0];
+      closeButton.onclick = function() {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
