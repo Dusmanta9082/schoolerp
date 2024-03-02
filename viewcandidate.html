@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .bar {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .bar:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .bar-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .view-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-button:hover {
+            background-color: #0056b3;
+        }
+
+        .candidate-details {
+            display: none;
+            margin-top: 10px;
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .candidate-details th, .candidate-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .candidate-details th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bar">
+            <div class="bar-name">Candidate 1</div>
+            <button class="view-button" onclick="showDetails('details1')">View</button>
+            <table id="details1" class="candidate-details">
+                <tr>
+                    <th>Detail</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>John Doe</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>Experience</td>
+                    <td>5 years</td>
+                </tr>
+            </table>
+        </div>
+        <div class="bar">
+            <div class="bar-name">Candidate 2</div>
+            <button class="view-button" onclick="showDetails('details2')">View</button>
+            <table id="details2" class="candidate-details">
+                <tr>
+                    <th>Detail</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>Jane Smith</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Experience</td>
+                    <td>3 years</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Add more bars as needed -->
+    </div>
+
+    <script>
+        function showDetails(tableId) {
+            var table = document.getElementById(tableId);
+            if (table.style.display === "none") {
+                table.style.display = "table";
+            } else {
+                table.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

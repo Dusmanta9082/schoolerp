@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-color: rgba(184, 184, 184, 1);
+        }
+
+        /* Style for the navigation bar */
+        .navbar {
+            background-color: #3f2982;
+            /* Red color */
+            padding: 5px;
+            /* Adjust padding to your preference */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        /* Style for the company name */
+        .company-name {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            margin-left: 2%;
+        }
+
+        /* Style for the icons */
+
+        .icons {
+            padding: 15px;
+            font-size: 20px;
+            margin-right: 2%;
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 10px;
+            margin-right: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            display: none;
+            /* Initially hide dropdown */
+        }
+
+        .icons i {
+            margin-right: 20px;
+        }
+
+        .dropdown a {
+            display: block;
+            /* Display options in a column */
+            padding: 5px 0;
+            /* Add padding between options */
+            color: #333;
+            /* Change option text color */
+            text-decoration: none;
+            /* Remove default underline */
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+            color: #3f2982;
+            /* Change background color on hover */
+        }
+
+        p {
+            color: #3f2982;
+        }
+
+        hr {
+            color: #3f2982;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .notificationContainer {
+            background-color: antiquewhite;
+            width: 60%;
+            margin: 5% 2rem 2rem;
+            padding: 1rem 1rem;
+            border-radius: 1rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .notificationHeader {
+            display: flex;
+            align-items: center;
+        }
+
+        #num-of-notif {
+            background-color: blue;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            width: 30px;
+            height: 30px;
+            border-radius: 0.5rem;
+            margin-left: 10px;
+        }
+
+        #mark-as-read {
+            color: grey;
+            cursor: pointer;
+            transition: 0.6s ease;
+        }
+
+        #mark-as-read:hover {
+            color: black;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .notificationCard {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .notif-time {
+            color: grey;
+        }
+
+        .notificationCard img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .notificationCard .description {
+            margin-left: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        .unread p{
+            color: #fff;
+        }
+        .unread {
+            background-color: rgb(240, 63, 63);
+            color: #fff;
+        }
+
+        
+        
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            .icons {
+                font-size: 16px;
+            }
+
+            .company-name {
+                font-size: 16px;
+            }
+
+            .dropdown {
+                right: 5px;
+            }
+
+            .notificationContainer {
+                margin: 10% 1rem 2rem;
+            }
+
+            .notificationCard img {
+                width: 40px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .icons {
+                font-size: 14px;
+            }
+
+            .company-name {
+                font-size: 14px;
+                margin-left: 1%;
+            }
+
+            .dropdown {
+                right: 2px;
+            }
+
+            .notificationContainer {
+                margin:20% 0.5rem 2rem;
+                
+    width: 80%;
+    max-height: 800px;
+            }
+
+            .notificationCard img {
+                width: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="company-name" onClick="window.location.href='studentdash.html';">School Name</div>
+        <div class="icons">
+            <i class="fas fa-inbox" id="inbox-icon"></i> <!-- Font Awesome inbox icon -->
+            <div class="dropdown" id="inbox-dropdown">
+                <p>Inbox</p>
+                <hr>
+                <a href="#">Message from School</a>
+                <a href="#">Message from Teacher</a>
+                <a href="#">Message from Student</a>
+            </div>
+            <i class="fas fa-bell" id="bell-icon"></i> <!-- Font Awesome bell icon -->
+            <div class="dropdown" id="bell-dropdown">
+                <p>Notifications</p>
+                <hr>
+                <a href="#">Notification 1</a>
+                <a href="#">Notification 2</a>
+                <a href="#">Notification 3</a>
+            </div>
+            <i class="fas fa-cog" id="settings-icon"></i> <!-- Font Awesome settings icon -->
+            <div class="dropdown" id="settings-dropdown">
+                <p>Settings</p>
+                <hr>
+                <a href="#">Account</a>
+                <a href="#">Privacy</a>
+                <a href="login.html">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="notificationContainer">
+            <header>
+                <div class="notificationHeader">
+                    <h1>Notifications</h1>
+                    <span id="num-of-notif"></span>
+                </div>
+                <p id="mark-as-read">Mark as All Read</p>
+            </header>
+            <main>
+                <div class="notificationCard unread">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+                <div class="notificationCard unread">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+                <div class="notificationCard unread">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+                <div class="notificationCard">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+                <div class="notificationCard">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+                <div class="notificationCard">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+                <div class="notificationCard">
+                    <img alt="photo" src="user.jpg" />
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, distinctio. Ratione,
+                            nisi. Vel excepturi nam error fugit repudiandae? Exercitationem labore minima earum quidem
+                            quasi error fugiat consequuntur commodi in dicta?</p>
+                        <p class="notif-time">1m ago</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+
+        const unReadMessages = document.querySelectorAll('.unread');
+        const unReadMessagesCount = document.getElementById('num-of-notif');
+        const markAll=document.querySelector('#mark-as-read');
+        
+        unReadMessagesCount.innerText= unReadMessages.length;
+        
+        unReadMessages.forEach((message)=> {
+            message.addEventListener('click', () => {
+                message.classList.remove('unread');
+                const newUnreadMessages =document.querySelectorAll('.unread');
+                unReadMessagesCount.innerText= newUnreadMessages.length;
+            });
+        });
+ 
+        markAll.addEventListener('click', () =>{
+            unReadMessages.forEach((message) =>{
+                message.classList.remove('unread');
+            });
+            const newUnreadMessages = document.querySelectorAll('.unread');
+            unReadMessagesCount.innerHTML = newUnreadMessages.length;
+        });
+    </script>
+</body>
+</html>

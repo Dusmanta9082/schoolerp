@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Calendar</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+<style>  
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+      background-color: #3f2982;
+      /* Red color */
+      padding: 5px;
+      /* Adjust padding to your preference */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    /* Style for the company name */
+    .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px;
+      margin-left: 2%;
+    }
+
+    /* Style for the icons */
+
+    .icons {
+      padding: 15px;
+      font-size: 20px;
+      margin-right: 2%;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 10px;
+      margin-right: 5px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      display: none;
+      /* Initially hide dropdown */
+
+    }
+
+    .icons i {
+      margin-right: 20px;
+    }
+
+    .dropdown a {
+      display: block;
+      /* Display options in a column */
+      padding: 10px 60px;
+      /* Add padding between options */
+      color: #333;
+      /* Change option text color */
+      text-decoration: none;
+      /* Remove default underline */
+    }
+
+    .dropdown a:hover {
+      background-color: #f0f0f0;
+      color: #3f2982;
+      /* Change background color on hover */
+    }
+
+
+.container {
+    max-width: 800px;
+    margin: 40px auto 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #3f2982;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+strong{
+    color:#3f2982 ;
+}
+</style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="company-name" onClick="window.location.href='studentdash.html';">School Name</div>
+        <div class="icons">
+            <i class="fas fa-inbox" id="inbox-icon"></i> <!-- Font Awesome inbox icon -->
+            <div class="dropdown" id="inbox-dropdown">
+                <p>Inbox</p>
+                <hr>
+                <a href="#">Message from School</a>
+                <a href="#">Message from Teacher</a>
+                <a href="#">Message from Student</a>
+            </div>
+            <i class="fas fa-bell" id="bell-icon"></i> <!-- Font Awesome bell icon -->
+            <div class="dropdown" id="bell-dropdown">
+                <p>Notifications</p>
+                <hr>
+                <a href="#">Notification 1</a> 
+                <a href="#">Notification 2</a>
+                <a href="#">Notification 3</a>
+            </div>
+            <i class="fas fa-cog" id="settings-icon"></i> <!-- Font Awesome settings icon -->
+            <div class="dropdown" id="settings-dropdown">
+                <p>Settings</p>
+                <hr>
+                <a href="studentaccount.html">Account</a>
+                <a href="#">Privacy</a>
+                <a href="login.html">Log out</a>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <h1>Academic Calendar</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Event</th>
+        </tr>
+        <tr>
+            <td>August 15</td>
+            <td>Faculty Orientation</td>
+        </tr>
+        <tr>
+            <td>August 20-21</td>
+            <td>New Student Orientation</td>
+        </tr>
+        <tr>
+            <td>August 26</td>
+            <td>Classes Begin</td>
+        </tr>
+        <tr>
+            <td>September 2</td>
+            <td>Last Day to Add/Drop Classes</td>
+        </tr>
+        <tr>
+            <td>September 6</td>
+            <td>Labor Day (University Closed)</td>
+        </tr>
+        <tr>
+            <td>October 11-12</td>
+            <td>Fall Break (No Classes)</td>
+        </tr>
+        <tr>
+            <td>November 24-26</td>
+            <td>Thanksgiving Break (University Closed)</td>
+        </tr>
+        <tr>
+            <td>December 10</td>
+            <td>Last Day of Classes</td>
+        </tr>
+        <tr>
+            <td>December 13-17</td>
+            <td>Final Exams</td>
+        </tr>
+        <tr>
+            <td>December 20</td>
+            <td>Fall Semester Ends</td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>Winter Break: December 21 - January 3 (University Closed)</strong></td>
+        </tr>
+        <tr>
+            <td>January 6</td>
+            <td>Classes Begin (Spring Semester)</td>
+        </tr>
+        <tr>
+            <td>January 13</td>
+            <td>Last Day to Add/Drop Classes</td>
+        </tr>
+        <tr>
+            <td>January 17</td>
+            <td>Martin Luther King Jr. Day (University Closed)</td>
+        </tr>
+        <tr>
+            <td>March 7-11</td>
+            <td>Spring Break (No Classes)</td>
+        </tr>
+        <tr>
+            <td>April 15</td>
+            <td>Last Day of Classes</td>
+        </tr>
+        <tr>
+            <td>April 18-22</td>
+            <td>Final Exams</td>
+        </tr>
+        <tr>
+            <td>April 25</td>
+            <td>Spring Semester Ends</td>
+        </tr>
+        <tr>
+            <td colspan="2"><strong>Summer Break: April 26 - May 31</strong></td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script>
+    // JavaScript to handle dropdown toggling
+    document.getElementById("inbox-icon").addEventListener("click", function () {
+        toggleDropdown("inbox-dropdown");
+    });
+
+    document.getElementById("bell-icon").addEventListener("click", function () {
+        toggleDropdown("bell-dropdown");
+    });
+
+    document.getElementById("settings-icon").addEventListener("click", function () {
+        toggleDropdown("settings-dropdown");
+    });
+
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        var allDropdowns = document.querySelectorAll('.dropdown');
+
+        // Close all dropdowns
+        allDropdowns.forEach(function (element) {
+            if (element.id !== dropdownId) {
+                element.style.display = "none";
+            }
+        });
+
+        // Toggle the selected dropdown
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        } else {
+            dropdown.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

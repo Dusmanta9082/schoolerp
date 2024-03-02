@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="studentdash.css">
+    <link rel="stylesheet" href="studentdash.js">
+    <style>
+        /* CSS styles */
+     
+    </style>
+
+</head>
+
+<body>
+    <!-- HTML structure for navigation bar -->
+    <div class="navbar">
+        <div class="company-name">School Name</div>
+        <div class="icons">
+            <i class="fas fa-inbox" id="inbox-icon"></i> <!-- Font Awesome inbox icon -->
+            <div class="dropdown" id="inbox-dropdown">
+                <p>Inbox</p>
+                <hr>
+                <a href="#">Message from School</a>
+                <a href="#">Message from Teacher</a>
+                <a href="#">Message from Student</a>
+            </div>
+            <i class="fas fa-bell" id="bell-icon"></i> <!-- Font Awesome bell icon -->
+            <div class="dropdown" id="bell-dropdown">
+                <p>Notifications</p>
+                <hr>
+                <a href="#">Notification 1</a>
+                <a href="#">Notification 2</a>
+                <a href="#">Notification 3</a>
+            </div>
+            <i class="fas fa-cog" id="settings-icon"></i> <!-- Font Awesome settings icon -->
+            <div class="dropdown" id="settings-dropdown">
+                <p>Settings</p>
+                <hr>
+                <a href="studentaccount.html">Account</a>
+                <a href="#">Privacy</a>
+                <a href="login.html">Log out</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contain">
+        <div class="main">
+
+            <button onClick="window.location.href='live.html';"><i class="fas fa-video"> </i>Live Class</button>
+            <button onClick="window.location.href='studentleave.html';"><i class="fas fa-child"> </i>Leave
+                Request</button>
+            <button onClick="window.location.href='studenttimetable.html';"><i class="fas fa-calendar-alt"> </i> Time
+                Table</button>
+            <button onClick="window.location.href='reportcard.html';"><i class="fas fa-file-contract"></i> Report
+                Card</button>
+            <button onClick="window.location.href='syllabus.html';"><i class="fas fa-book-open"></i>Syllabus</button>
+            <button onClick="window.location.href='academiccalendar.html';"><i class="fas fa-calendar-week"></i>
+                Academic
+                Calander</button>
+            <button onClick="window.location.href='notifications.html';"><i class="fas fa-bell"></i>
+                Notification</button>
+
+        </div>
+
+        <div class="main2">
+
+            <button onClick="window.location.href='transport.html';"><i class="fas fa-bus-alt"> </i>Transport</button>
+            <button onClick="window.location.href='remarkdairy.html';"><i class="fas fa-book-reader"> </i>Remark
+                Dairy</button>
+            <button onClick="window.location.href='classwork.html';"><i class="fas fa-swatchbook"> </i> Class
+                Work</button>
+            <button onClick="window.location.href='homework.html';"><i class="fas fa-book"></i> Home Work</button>
+            <button onClick="window.location.href='recordedclass.html';"><i class="fas fa-tv"></i>Recorded
+                Class</button>
+            <button onClick="window.location.href='gallery.html';"><i class="fas fa-photo-video"></i> School
+                Gallery</button>
+            <button onClick="window.location.href='inbox.html';"><i class="fas fa-inbox"></i> Inbox</button>
+
+        </div>
+    </div>
+
+    <div class="eventphoto">
+
+    </div>
+
+    <script src="studentdash.js">
+    </script>
+    
+
+</body>
+
+</html>

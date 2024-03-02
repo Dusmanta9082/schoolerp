@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+        
+        .day {
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #4CAF50; /* Default green color for present */
+            position: relative;
+        }
+        
+        .absent {
+            background-color: #FFA500; /* Orange */
+            color: #fff;
+        }
+        
+        .holiday {
+            background-color: #FFFF00; /* Yellow */
+            color: #000;
+        }
+
+        .weekend {
+            background-color: #FF5733; /* Red */
+            color: #fff;
+        }
+
+        /* Attendance details */
+        .attendance-details {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1;
+        }
+
+        .day:hover .attendance-details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance Calendar</h1>
+        <div>
+            <label for="month">Select Month:</label>
+            <select name="month" id="month">
+                <option value="0">January</option>
+                <option value="1">February</option>
+                <option value="2">March</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">October</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+            <label for="year">Select Year:</label>
+            <input type="number" id="year" value="2024" min="2000" max="2100">
+            <button onclick="generateCalendar()">Go</button>
+        </div>
+        <div class="calendar" id="calendar">
+            <!-- Weekday labels -->
+            <div class="day">Sun</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+        </div>
+    </div>
+
+    <script>
+        function generateCalendar() {
+            const monthIndex = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const calendarElement = document.getElementById('calendar');
+            const startDate = new Date(year, monthIndex, 1);
+            const endDate = new Date(year, monthIndex + 1, 0);
+
+            // Clear previous calendar
+            calendarElement.innerHTML = '';
+
+            // Weekday labels
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            weekdays.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('day');
+                dayElement.textContent = day;
+                calendarElement.appendChild(dayElement);
+            });
+
+            // Generate empty cells for days before the start date
+            for (let i = 0; i < startDate.getDay(); i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.classList.add('day');
+                calendarElement.appendChild(emptyCell);
+            }
+
+            // Generate cells for each day in the month
+            for (let day = startDate.getDate(); day <= endDate.getDate(); day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('day');
+                dayElement.textContent = day;
+
+                // Check if it's a weekend (Saturday or Sunday)
+                const dayOfWeek = new Date(year, monthIndex, day).getDay();
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    dayElement.classList.add('weekend');
+                    const attendanceDetails = document.createElement('div');
+                    attendanceDetails.classList.add('attendance-details');
+                    attendanceDetails.textContent = 'Weekend';
+                    dayElement.appendChild(attendanceDetails);
+                } else if (day % 10 === 0) {
+                    dayElement.classList.add('holiday');
+                    const attendanceDetails = document.createElement('div');
+                    attendanceDetails.classList.add('attendance-details');
+                    attendanceDetails.textContent = 'Holiday';
+                    dayElement.appendChild(attendanceDetails);
+                }
+
+                calendarElement.appendChild(dayElement);
+            }
+        }
+
+        // Generate calendar for the current month initially
+        generateCalendar();
+    </script>
+</body>
+</html>
